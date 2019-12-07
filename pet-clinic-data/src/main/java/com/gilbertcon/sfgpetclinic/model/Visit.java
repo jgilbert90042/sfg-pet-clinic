@@ -2,7 +2,7 @@ package com.gilbertcon.sfgpetclinic.model;
 
 import java.time.LocalDate;
 
-public class Visit {
+public class  Visit {
 
     private LocalDate date;
     private String description;
