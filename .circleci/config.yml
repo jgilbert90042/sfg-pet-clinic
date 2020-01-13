@@ -33,11 +33,6 @@ jobs:
       - checkout
 
       - run: sudo apt install -y mysql-client
-      - run: ps -axg | grep mysql
-      - run: netstat -lnpat | grep 3306
-      - run:
-          name: MySQL database
-          command: mysql -h 127.0.0.1 -u root -e "create database sfgpetclinic; create user 'sfgpetclinic'@'localhost' identified by 'sfgpetclinic'; grant all on sfgpetclinic.* to 'sfgpetclinic'@'localhost';"
 
       # Download and cache dependencies
       - restore_cache:
@@ -54,6 +49,10 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
+
+      - run:
+          name: MySQL database
+          command: mysql -h127.0.0.1 -uroot -e "create user 'sfgpetclinic'@'localhost' identified by 'sfgpetclinic'; grant all on sfgpetclinic.* to 'sfgpetclinic'@'localhost';"
 
       # run tests!
       - run: mvn integration-test
