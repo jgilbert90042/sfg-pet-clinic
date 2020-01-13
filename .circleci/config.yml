@@ -33,7 +33,8 @@ jobs:
       - checkout
 
       - run: sudo apt install -y mysql-client
-
+      - run: ps -axg | grep mysql
+      - run: netstat -lnpat | grep 3306
       - run:
           name: MySQL database
           command: mysql -h 127.0.0.1 -u root -e "create database sfgpetclinic; create user 'sfgpetclinic'@'localhost' identified by 'sfgpetclinic'; grant all on sfgpetclinic.* to 'sfgpetclinic'@'localhost';"
