@@ -52,7 +52,7 @@ jobs:
 
       - run:
           name: MySQL database
-          command: mysql -h127.0.0.1 -uroot -e "create user 'sfgpetclinic'@'localhost' identified by 'sfgpetclinic'; grant all on sfgpetclinic.* to 'sfgpetclinic'@'localhost';"
+          command: mysql -h127.0.0.1 -uroot -e "create user 'sfgpetclinic'@'127.0.0.1' identified by 'sfgpetclinic'; grant all on sfgpetclinic.* to 'sfgpetclinic'@'127.0.0.1';"
 
       # run tests!
       - run: mvn integration-test
